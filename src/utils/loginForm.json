@@ -1,0 +1,14 @@
+[
+    {
+        "name": "id",
+        "type": "text",
+        "placeholder": "Id",
+        "required": true
+    },
+    {
+        "name": "name",
+        "type": "text",
+        "placeholder": "Name",
+        "required": true
+    }
+]
