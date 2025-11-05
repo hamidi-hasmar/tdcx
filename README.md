@@ -35,4 +35,4 @@ pushing code to main branch in git will run the build command automatically and 
 
 ## Live Demo
 
-link: https://tdcx-ivory.vercel.app/
+link: [https://tdcx-ivory.vercel.app/](https://tdcx-ivory.vercel.app/)
