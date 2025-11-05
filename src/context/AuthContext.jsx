@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(
     !!Cookies.get("session_active")
   );
+  const [userData, setUserData] = useState(Cookies.get("user_session"));
 
   useEffect(() => {
     const handleStorage = () =>
@@ -16,7 +17,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
+    <AuthContext.Provider
+      value={{ authenticated, setAuthenticated, userData, setUserData }}
+    >
       {children}
     </AuthContext.Provider>
   );

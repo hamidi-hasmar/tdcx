@@ -6,7 +6,7 @@ import CustomInput from "../components/CustomInput";
 import { useAuth } from "../context/AuthContext";
 
 function LoginPage() {
-  const {setAuthenticated} = useAuth();
+  const {setAuthenticated, setUserData} = useAuth();
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -20,7 +20,7 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.id.trim()) {
-      login(formData, setAuthenticated);
+      login(formData, setAuthenticated, setUserData);
       navigate("/dashboard");
     }
   };
