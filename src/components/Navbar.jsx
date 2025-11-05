@@ -15,7 +15,7 @@ function Navbar() {
       <div className="flex justify-center items-center">
         <div className="flex">
           <img
-            src="/profile-img.png"
+            src="profile-img.png"
             alt="profile-img"
             width={48}
             height={48}

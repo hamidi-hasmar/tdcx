@@ -17,7 +17,7 @@ function PublicRoute({ children }) {
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/tdcx">
         <Navbar />
         <Routes>
           <Route
