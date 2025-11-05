@@ -1,14 +1,9 @@
-import { useState } from "react";
 import CustomInput from "./CustomInput";
 import { IoSearchSharp } from "react-icons/io5";
 
-function SearchSection({ setModalOpen, setFrom }) {
-  const [formData, setFormData] = useState({
-    search: "",
-  });
-
+function SearchSection({ setModalOpen, setFrom, setSearchTerm, searchTerm }) {
   const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -22,7 +17,7 @@ function SearchSection({ setModalOpen, setFrom }) {
             onChange={onChange}
             placeholder="Search by task name"
             type="text"
-            value={formData["search"]}
+            value={searchTerm}
             customClass="!bg-[#D9DFEB] pl-10 pr-3 mr-3 w-full md:w-auto"
           />
         </div>

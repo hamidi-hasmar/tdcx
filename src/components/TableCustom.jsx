@@ -4,7 +4,14 @@ import { RiPencilFill } from "react-icons/ri";
 import { FaTrash } from "react-icons/fa6";
 import { TfiCheckBox } from "react-icons/tfi";
 
-function TableCustom({ taskList, setTaskList, setModalOpen, setFrom, setId }) {
+function TableCustom({
+  taskList,
+  setTaskList,
+  setModalOpen,
+  setFrom,
+  setId,
+  searchTerm,
+}) {
   const [sortedTasks, setSortedTasks] = useState([]);
 
   const checkboxClick = (id) => {
@@ -23,6 +30,14 @@ function TableCustom({ taskList, setTaskList, setModalOpen, setFrom, setId }) {
     const reversedList = [...taskList].reverse();
     setSortedTasks(reversedList);
   }, [taskList]);
+
+  useEffect(() => {
+    const reversedList = [...taskList].reverse();
+    const filteredList = reversedList.filter((task) =>
+      task.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSortedTasks(filteredList);
+  }, [searchTerm]);
 
   return (
     <div className="mt-4 mb-4 md:mt-2.5 flex flex-col lg:flex-row gap-6 w-full justify-between items-center px-0 md:px-40">
@@ -64,11 +79,17 @@ function TableCustom({ taskList, setTaskList, setModalOpen, setFrom, setId }) {
                 />
               </div>
             </div>
-            {index !== taskList.length - 1 && (
+            {index !== sortedTasks.length - 1 && (
               <hr className="border-gray-300 my-6" />
             )}
           </React.Fragment>
         ))}
+
+        {sortedTasks.length === 0 && (
+          <p className="text-center text-gray-500">
+            No tasks found for "{searchTerm}"
+          </p>
+        )}
       </div>
     </div>
   );

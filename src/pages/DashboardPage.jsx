@@ -13,6 +13,7 @@ function DashboardPage() {
   const [id, setId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const loadTask = async () => {
@@ -54,13 +55,19 @@ function DashboardPage() {
       <ThreeCard taskList={taskList} />
       {taskList.length > 0 && (
         <>
-          <SearchSection setModalOpen={setModalOpen} setFrom={setFrom} />
+          <SearchSection
+            setModalOpen={setModalOpen}
+            setFrom={setFrom}
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+          />
           <TableCustom
             taskList={taskList}
             setTaskList={setTaskList}
             setModalOpen={setModalOpen}
             setFrom={setFrom}
             setId={setId}
+            searchTerm={searchTerm}
           />
         </>
       )}
